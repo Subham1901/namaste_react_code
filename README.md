@@ -9,7 +9,7 @@ React with CDN
 <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 ```
-## Week-1 coding
+## Week-2 coding
 
 NPM
 Builder - Parcel(The Beast)
