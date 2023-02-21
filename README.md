@@ -11,10 +11,10 @@ React with CDN
 ```
 ## Week-2 coding
 
-NPM
-Builder - Parcel(The Beast)
-Parcel production build
-react and react-dom
+*NPM
+*Builder - Parcel(The Beast)
+*Parcel production build
+*react and react-dom
 
 ```bash
 npm init
