@@ -1,9 +1,28 @@
-#Namaste React
+# Namaste React
 
-#Week-1
-React app with CDN
+React from zero to hero
 
-#Week-2 
-Parcel Bundler(The Beast)
-Imported React and ReactDOM using npm
-Added .gitignore file to reduce memory space
+## Week-1 coding
+
+React with CDN
+```bash
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+```
+## Week-1 coding
+
+NPM
+Builder - Parcel(The Beast)
+Parcel production build
+react and react-dom
+
+```bash
+npm init
+
+npm install -D parcel
+
+npx parcel <entry_point>
+
+npm parcel build <entry_point>
+```
+
