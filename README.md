@@ -1,4 +1,9 @@
 #Namaste React
 
+#Week-1
+React app with CDN
 
-I'm gonna share all the coding assignment solution here
+#Week-2 
+Parcel Bundler(The Beast)
+Imported React and ReactDOM using npm
+Added .gitignore file to reduce memory space
