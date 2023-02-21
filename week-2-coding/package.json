@@ -1,0 +1,31 @@
+{
+  "name": "week-2-coding",
+  "version": "1.0.0",
+  "description": "Namaste React Week-2 Coding Solution",
+  "scripts": {
+    "start": "npx parcel index.html",
+    "build": "npx parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Subham1901/namaste_react_code.git"
+  },
+  "author": "Subham Panda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Subham1901/namaste_react_code/issues"
+  },
+  "homepage": "https://github.com/Subham1901/namaste_react_code#readme",
+  "dependencies": {
+    "parcel": "^2.8.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
+  },
+  "browserlist": [
+    "last 10 versions"
+  ]
+}
