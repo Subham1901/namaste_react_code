@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgb(122, 243, 243);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0.1px 10px 1px rgb(147, 147, 147);
+}
+input {
+  display: block;
+  padding: 1rem;
+  border-radius: 50px;
+  outline: none;
+  forced-color-adjust: none;
+}
