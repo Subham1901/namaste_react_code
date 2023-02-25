@@ -13,6 +13,8 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { IoLogoDesignernews } from "react-icons/io";
+import { FaUserAlt } from "react-icons/fa";
 //!root element
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
