@@ -19,6 +19,8 @@ function Header() {
   return (
     <Container maxW={"container.xl"}>
       <Box
+        pos="relative"
+        position={"static"}
         boxShadow={"lg"}
         padding="2"
         display={"flex"}
