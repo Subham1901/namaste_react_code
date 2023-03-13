@@ -46,9 +46,10 @@ export default function RestaurantList() {
       setFilteredRestaurant(allRestaurants);
     }
   }, [searchText]);
-
+  console.log("render");
   useEffect(() => {
     //API Call
+    console.log("inside useeffect");
     getRestaurants();
   }, []);
 
@@ -64,6 +65,10 @@ export default function RestaurantList() {
     setLoading(false);
   };
 
+  //early return
+  if (!filteredRestaurant) {
+    return null;
+  }
   return loading ? (
     <>
       <Box alignItems="center" display={"flex"} justifyContent="center" p={5}>
@@ -116,7 +121,7 @@ export default function RestaurantList() {
             fontWeight={"semibold"}
             fontSize="2xl"
           >
-            Oops! No restaurant found with {searchText}
+            Oops! No restaurant found!!☹️
           </Text>
         ) : (
           filteredRestaurant.map((restaurn) => (
