@@ -18,12 +18,19 @@ function Shimmer({ list }) {
         justifyContent={"center"}
         alignItems="center"
       >
-        {[1, 2, 3, 4, 5, 6].map((data) => (
-          <Card m={(0, "2rem !important")} w={"xs"} p={2} key={data}>
-            <Skeleton height={140} />
-            <SkeletonText mt="4" noOfLines={5} spacing="4" skeletonHeight="2" />
-          </Card>
-        ))}
+        {Array(6)
+          .fill("")
+          .map((data, index) => (
+            <Card m={(0, "2rem !important")} w={"xs"} p={2} key={index}>
+              <Skeleton height={140} />
+              <SkeletonText
+                mt="4"
+                noOfLines={5}
+                spacing="4"
+                skeletonHeight="2"
+              />
+            </Card>
+          ))}
       </HStack>
     </Container>
   );

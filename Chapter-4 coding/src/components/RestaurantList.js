@@ -83,7 +83,9 @@ export default function RestaurantList() {
             type={"search"}
             placeholder="Search restaurant"
           />
-          <Button type="submit">Search</Button>
+          <Button ml={4} w={["full", "70"]} type="submit">
+            Search
+          </Button>
         </form>
       </Box>
       <Shimmer list={15} />
@@ -102,7 +104,7 @@ export default function RestaurantList() {
             type={"search"}
             placeholder="Search restaurant"
           />
-          <Button w={["full", "70"]} type="submit">
+          <Button ml={4} w={["full", "70"]} type="submit">
             Search
           </Button>
         </form>
