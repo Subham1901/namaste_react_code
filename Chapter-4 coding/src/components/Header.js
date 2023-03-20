@@ -4,10 +4,12 @@ import {
   AvatarBadge,
   Box,
   Button,
+  Code,
   Container,
   Heading,
   HStack,
   Img,
+  Text,
   useColorMode,
 } from "@chakra-ui/react";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -39,46 +41,71 @@ function Header() {
             Food247
           </Heading>
         </Box>
-        <HStack>
+        <Box
+          w={"sm"}
+          display="flex"
+          alignItems={"center"}
+          justifyContent="space-between"
+        >
           <Button
             css={{
               "&:hover": {
-                color: "orange",
+                color: "#fc8019",
               },
             }}
             variant={"unstyled"}
-            mr={2}
           >
             <Link to="/">Home</Link>
           </Button>
           <Button
             css={{
               "&:hover": {
-                color: "orange",
+                color: "#fc8019",
               },
             }}
             variant={"unstyled"}
-            mr={2}
           >
             <Link to="/about">About</Link>
           </Button>
           <Button
             css={{
               "&:hover": {
-                color: "orange",
+                color: "#fc8019",
               },
             }}
             variant={"unstyled"}
-            mr={2}
           >
             <Link to="/contact">Contact</Link>
           </Button>
-
-          <Button variant={"unstyled"} p={0} onClick={toggleColorMode}>
-            {colorMode === "light" ? <RiMoonClearLine /> : <BsFillSunFill />}
+          <Button
+            css={{
+              "&:hover": {
+                color: "#fc8019",
+              },
+            }}
+            variant={"unstyled"}
+          >
+            <Link to="/">Sign In</Link>
           </Button>
 
-          <Button variant={"unstyled"}>
+          <Button
+            css={{
+              "&:hover": {
+                color: "#fc8019",
+              },
+            }}
+            variant={"unstyled"}
+          >
+            <Link to="/">
+              <Code colorScheme={"green"}>0</Code> Cart
+            </Link>
+          </Button>
+
+          {/* <Button variant={"unstyled"} p={0} onClick={toggleColorMode}>
+            {colorMode === "light" ? <RiMoonClearLine /> : <BsFillSunFill />}
+          </Button> */}
+
+          {/* <Button variant={"unstyled"}>
             <Avatar
               bgColor={"orange"}
               size={"sm"}
@@ -88,12 +115,7 @@ function Header() {
                 0
               </AvatarBadge>
             </Avatar>
-          </Button>
-        </HStack>
-        <Box>
-          <Button bgColor={"orange"} variant={"solid"} mr={2}>
-            Login
-          </Button>
+          </Button> */}
         </Box>
       </Box>
     </Container>

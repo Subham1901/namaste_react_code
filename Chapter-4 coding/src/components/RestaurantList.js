@@ -1,31 +1,16 @@
 import React, { useEffect, useState } from "react";
 import {
   Box,
-  Button,
-  Card,
   Container,
-  Heading,
   HStack,
   Input,
-  SimpleGrid,
-  Skeleton,
-  SkeletonCircle,
-  SkeletonText,
   Text,
   useColorMode,
 } from "@chakra-ui/react";
-import { RESTAURANT_LIST } from "./config";
 import RestauranCard from "./RestauranCard";
 import Shimmer from "./Shimmer";
+import { filterRestauant } from "../utils/Common";
 
-//!filter
-function filterRestauant(searchData, restaurant) {
-  const filter = restaurant.filter((res) => {
-    return res.data.name.toLowerCase().includes(searchData.toLowerCase());
-  });
-
-  return filter;
-}
 export default function RestaurantList() {
   const { colorMode } = useColorMode();
   const [searchText, setSearchText] = useState();
@@ -33,25 +18,18 @@ export default function RestaurantList() {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
-  const submitData = (event) => {
-    event.preventDefault();
-    if (searchText) {
-      const filterData = filterRestauant(searchText, allRestaurants);
-      setFilteredRestaurant(filterData);
-    }
-  };
+  // const submitData = (event) => {
+  //   event.preventDefault();
+  //   if (searchText) {
+  //     const filterData = filterRestauant(searchText, allRestaurants);
+  //     setFilteredRestaurant(filterData);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (!searchText) {
-      setFilteredRestaurant(allRestaurants);
-    }
-  }, [searchText]);
-  console.log("render");
-  useEffect(() => {
-    //API Call
-    console.log("inside useeffect");
-    getRestaurants();
-  }, []);
+  const getFilteredRestuarnts = (e) => {
+    const filterData = filterRestauant(e.target.value, allRestaurants);
+    setFilteredRestaurant(filterData);
+  };
 
   //get restraurants
   const getRestaurants = async () => {
@@ -65,6 +43,18 @@ export default function RestaurantList() {
     setLoading(false);
   };
 
+  useEffect(() => {
+    if (!searchText) {
+      setFilteredRestaurant(allRestaurants);
+    }
+  }, [searchText]);
+
+  useEffect(() => {
+    //API Call
+    console.log("inside useeffect");
+    getRestaurants();
+  }, []);
+
   //early return
   if (!filteredRestaurant) {
     return null;
@@ -72,42 +62,40 @@ export default function RestaurantList() {
   return loading ? (
     <>
       <Box alignItems="center" display={"flex"} justifyContent="center" p={5}>
-        <form onSubmit={submitData}>
-          <Input
-            w={"sm"}
-            focusBorderColor="#FF0000"
-            bgColor={colorMode === "light" ? "gray.50" : "gray.700"}
-            border={"1px solid orange"}
-            defaultValue={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            type={"search"}
-            placeholder="Search restaurant"
-          />
-          <Button ml={4} w={["full", "70"]} type="submit">
-            Search
-          </Button>
-        </form>
+        {/* <form onSubmit={submitData}> */}
+        <Input
+          w={"sm"}
+          borderRadius="full"
+          focusBorderColor="#FF0000"
+          bgColor={colorMode === "light" ? "gray.50" : "gray.700"}
+          border={"1px solid orange"}
+          defaultValue={searchText}
+          onChange={(e) => getFilteredRestuarnts(e)}
+          type={"search"}
+          placeholder="Search restaurant"
+        />
+
+        {/* </form> */}
       </Box>
-      <Shimmer list={15} />
+      <Shimmer type={"home"} />
     </>
   ) : (
     <Container maxW={"container.xl"}>
       <Box alignItems="center" display={"flex"} justifyContent="center" p={5}>
-        <form onSubmit={submitData}>
-          <Input
-            w={"sm"}
-            focusBorderColor="#FF0000"
-            bgColor={colorMode === "light" ? "gray.50" : "gray.700"}
-            border={"1px solid orange"}
-            defaultValue={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            type={"search"}
-            placeholder="Search restaurant"
-          />
-          <Button ml={4} w={["full", "70"]} type="submit">
-            Search
-          </Button>
-        </form>
+        {/* <form onSubmit={submitData}> */}
+        <Input
+          w={"sm"}
+          borderRadius="full"
+          focusBorderColor="#FF0000"
+          bgColor={colorMode === "light" ? "gray.50" : "gray.700"}
+          border={"1px solid orange"}
+          defaultValue={searchText}
+          onChange={(e) => getFilteredRestuarnts(e)}
+          type={"search"}
+          placeholder="Search restaurant"
+        />
+
+        {/* </form> */}
       </Box>
       <HStack
         flexWrap={"wrap"}

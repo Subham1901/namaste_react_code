@@ -1,7 +1,6 @@
 import { Box, Heading, Img } from "@chakra-ui/react";
 import React from "react";
-import { useRouteError } from "react-router-dom";
-import ErrorImg from "../assets/error.jpg";
+import { Link, useRouteError } from "react-router-dom";
 
 export default function Error() {
   const routeError = useRouteError();
@@ -15,13 +14,14 @@ export default function Error() {
       mt="10"
     >
       {/* <Img src={ErrorImg} /> */}
-      <Heading color={"orange.500"} fontSize="8xl">
+      <Heading color={"red.500"} fontSize="8xl">
         {routeError.status}
       </Heading>
-      <Heading color={"orange.500"} fontSize="6xl">
+      <Heading fontWeight={"semibold"} color={"red.500"} fontSize="3xl">
         {" "}
-        {routeError.statusText}
+        Oops! The page you requested was {routeError.statusText}
       </Heading>
+      <Link to={window.location.origin}>Goto</Link>
     </Box>
   );
 }

@@ -7,17 +7,22 @@ import {
   AccordionIcon,
   Box,
   Image,
+  Divider,
 } from "@chakra-ui/react";
 import { IMG_CDN_URL } from "./config";
 import NONVEG from "../assets/nonveg.png";
 import VEG from "../assets/veg.png";
 import Catgories from "./Catgories";
 export default function MenuItems({ catgories, title, menu, carousel }) {
-  console.log(carousel);
   return (
     <>
       {menu && menu.length >= 1 && (
-        <Accordion defaultIndex={[0]} w={["sm", "md", "3xl"]} allowToggle>
+        <Accordion
+          mt={5}
+          defaultIndex={[0]}
+          w={["xs", "sm", "md", "3xl"]}
+          allowToggle
+        >
           {title && (
             <AccordionItem>
               <h2>
@@ -55,16 +60,23 @@ export default function MenuItems({ catgories, title, menu, carousel }) {
                             }
                           />
                         </Box>
-                        <Box>{menu?.card?.info?.name}</Box>
+                        <Box fontWeight={"semibold"}>
+                          {menu?.card?.info?.name}
+                        </Box>
                         <Box>₹{menu?.card?.info?.price / 100}</Box>
+                        <Box fontSize={13} color="gray.500" mt={5} w="xl">
+                          {menu?.card?.info?.description}
+                        </Box>
                       </Box>
-                      <Image
-                        width={150}
-                        borderRadius="md"
-                        objectFit={"cover"}
-                        alt="image"
-                        src={`${IMG_CDN_URL}${menu?.card?.info?.imageId}`}
-                      />
+                      {menu?.card?.info?.imageId && (
+                        <Image
+                          width={150}
+                          borderRadius="md"
+                          objectFit={"cover"}
+                          alt="image"
+                          src={`${IMG_CDN_URL}${menu?.card?.info?.imageId}`}
+                        />
+                      )}
                     </Box>
                   </AccordionPanel>
                 ))
