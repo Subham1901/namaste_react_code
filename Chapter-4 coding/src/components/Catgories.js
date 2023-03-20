@@ -16,7 +16,12 @@ export default function Catgories({ catgories }) {
     <>
       {catgories &&
         catgories.map((cat) => (
-          <Accordion allowToggle defaultIndex={[0]}>
+          <Accordion
+            w={["xs", "sm", "md", "3xl"]}
+            key={cat.title}
+            allowToggle
+            defaultIndex={[0]}
+          >
             <AccordionItem>
               <h2>
                 <AccordionButton>
