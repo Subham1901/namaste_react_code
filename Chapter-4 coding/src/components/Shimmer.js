@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-function Shimmer({ type }) {
+const Shimmer = ({ type }) => {
   return (
     <Container
       display={"flex"}
@@ -61,6 +61,6 @@ function Shimmer({ type }) {
           ))}
     </Container>
   );
-}
+};
 
 export default Shimmer;

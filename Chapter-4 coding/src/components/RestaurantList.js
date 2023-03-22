@@ -13,14 +13,14 @@ import Shimmer from "./Shimmer";
 import { filterRestauant } from "../utils/Common";
 import useOnline from "../utils/useOnline";
 import { AiOutlineWarning } from "react-icons/ai";
+import useApi from "../utils/useApi";
 
 export default function RestaurantList() {
   const { colorMode } = useColorMode();
   const [searchText, setSearchText] = useState();
-  const [loading, setLoading] = useState(false);
-  const [allRestaurants, setAllRestaurants] = useState([]);
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-
+  //custom hook
+  const [allRestaurants, filteredRestaurant, setFilteredRestaurant, loading] =
+    useApi();
   const isOnline = useOnline();
 
   const getFilteredRestuarnts = (e) => {
@@ -28,29 +28,11 @@ export default function RestaurantList() {
     setFilteredRestaurant(filterData);
   };
 
-  //get restraurants
-  const getRestaurants = async () => {
-    setLoading(true);
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4698577&lng=78.3578246&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
-    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    setLoading(false);
-  };
-
   useEffect(() => {
     if (!searchText) {
       setFilteredRestaurant(allRestaurants);
     }
   }, [searchText]);
-
-  useEffect(() => {
-    //API Call
-    console.log("inside useeffect");
-    getRestaurants();
-  }, []);
 
   //check internet connection
   if (!isOnline) {
@@ -77,7 +59,7 @@ export default function RestaurantList() {
           w={"sm"}
           borderRadius="full"
           focusBorderColor="#FF0000"
-          bgColor={colorMode === "light" ? "gray.50" : "gray.700"}
+          bgColor={"gray.50"}
           border={"1px solid orange"}
           defaultValue={searchText}
           onChange={(e) => getFilteredRestuarnts(e)}
@@ -97,7 +79,7 @@ export default function RestaurantList() {
           w={"sm"}
           borderRadius="full"
           focusBorderColor="#FF0000"
-          bgColor={colorMode === "light" ? "gray.50" : "gray.700"}
+          bgColor={"gray.50"}
           border={"1px solid orange"}
           defaultValue={searchText}
           onChange={(e) => getFilteredRestuarnts(e)}

@@ -1,15 +1,18 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { Footer } from "./src/components/Footer";
 import Header from "./src/components/Header";
 import RestaurantList from "./src/components/RestaurantList";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import About from "./src/components/About";
+
 import Error from "./src/components/Error";
 import Contact from "./src/components/Contact";
 import { RestaurantDetails } from "./src/components/RestaurantDetails";
 import Profile from "./src/components/Profile";
+import ShimmerLoad from "./src/components/Shimmer";
+
+const About = lazy(() => import("./src/components/About"));
 
 const AppLayout = () => {
   return (
@@ -34,7 +37,12 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<ShimmerLoad type={"menu"} />}>
+            {" "}
+            <About />
+          </Suspense>
+        ),
         children: [{ path: "profile", element: <Profile /> }],
       },
       {

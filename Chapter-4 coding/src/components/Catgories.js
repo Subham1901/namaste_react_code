@@ -19,7 +19,7 @@ export default function Catgories({ catgories }) {
           <Accordion
             w={["xs", "sm", "md", "3xl"]}
             key={cat.title}
-            allowToggle
+            allowMultiple
             defaultIndex={[0]}
           >
             <AccordionItem>

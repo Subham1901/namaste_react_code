@@ -19,10 +19,10 @@ export default function MenuItems({ catgories, title, menu, carousel }) {
   return (
     <>
       <Accordion
-        mt={5}
+        allowMultiple
         defaultIndex={[0]}
+        mt={5}
         w={["xs", "sm", "md", "3xl"]}
-        allowToggle
       >
         {title && (
           <AccordionItem>
