@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Box,
   Container,
+  Heading,
   HStack,
   Input,
   Text,
@@ -10,6 +11,8 @@ import {
 import RestauranCard from "./RestauranCard";
 import Shimmer from "./Shimmer";
 import { filterRestauant } from "../utils/Common";
+import useOnline from "../utils/useOnline";
+import { AiOutlineWarning } from "react-icons/ai";
 
 export default function RestaurantList() {
   const { colorMode } = useColorMode();
@@ -18,13 +21,7 @@ export default function RestaurantList() {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
-  // const submitData = (event) => {
-  //   event.preventDefault();
-  //   if (searchText) {
-  //     const filterData = filterRestauant(searchText, allRestaurants);
-  //     setFilteredRestaurant(filterData);
-  //   }
-  // };
+  const isOnline = useOnline();
 
   const getFilteredRestuarnts = (e) => {
     const filterData = filterRestauant(e.target.value, allRestaurants);
@@ -55,6 +52,19 @@ export default function RestaurantList() {
     getRestaurants();
   }, []);
 
+  //check internet connection
+  if (!isOnline) {
+    return (
+      <Box display={"flex"} justifyContent="center" alignItems={"center"}>
+        <Box alignItems={"center"} display={"flex"} flexDirection="column">
+          <AiOutlineWarning size={60} color="red" />
+          <Heading fontSize={"4xl"} fontWeight="semibold">
+            Check your connection!!
+          </Heading>
+        </Box>
+      </Box>
+    );
+  }
   //early return
   if (!filteredRestaurant) {
     return null;

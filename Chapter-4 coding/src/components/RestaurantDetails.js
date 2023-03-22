@@ -6,11 +6,10 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { AiTwotoneStar } from "react-icons/ai";
 import Shimmer from "./Shimmer";
-import { FaRupeeSign } from "react-icons/fa";
 import MenuItems from "./MenuItems";
 import useRestaurant from "../utils/useRestaurant";
 

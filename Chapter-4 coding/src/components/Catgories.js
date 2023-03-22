@@ -58,6 +58,9 @@ export default function Catgories({ catgories }) {
                       </Box>
                       <Box>{menu?.card?.info?.name}</Box>
                       <Box>₹{menu?.card?.info?.price / 100}</Box>
+                      <Box fontSize={13} color="gray.500" mt={5} w="xl">
+                        {menu?.card?.info?.description}
+                      </Box>
                     </Box>
                     <Image
                       width={150}
