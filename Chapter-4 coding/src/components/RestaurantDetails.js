@@ -6,7 +6,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { AiTwotoneStar } from "react-icons/ai";
 import Shimmer from "./Shimmer";
@@ -15,7 +15,9 @@ import useRestaurant from "../utils/useRestaurant";
 
 export const RestaurantDetails = () => {
   const { id: ResturantId } = useParams();
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   //Custom Hook
   const [headerInfo, menuDetails] = useRestaurant(ResturantId);
 
@@ -63,7 +65,7 @@ export const RestaurantDetails = () => {
           </Box>
         </HStack>
       )}
-      <Divider m={5} />
+
       <Box mb={5} display={"flex"} alignItems="center">
         <Text fontWeight={"bold"}>{headerInfo.costForTwoMessage}</Text>
       </Box>

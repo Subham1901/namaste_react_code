@@ -7,6 +7,7 @@ import {
   AccordionIcon,
   Box,
   Image,
+  Button,
 } from "@chakra-ui/react";
 import { IMG_CDN_URL } from "./config";
 import NONVEG from "../assets/nonveg.png";
@@ -17,7 +18,8 @@ export default function Catgories({ catgories }) {
       {catgories &&
         catgories.map((cat) => (
           <Accordion
-            w={["xs", "sm", "md", "3xl"]}
+            reduceMotion
+            w={["280", "xs", "sm", "md", "2xl"]}
             key={cat.title}
             allowMultiple
             defaultIndex={[0]}
@@ -25,19 +27,17 @@ export default function Catgories({ catgories }) {
             <AccordionItem>
               <h2>
                 <AccordionButton>
-                  <Box
-                    as="span"
-                    fontWeight={"semibold"}
-                    flex="1"
-                    textAlign="left"
-                  >
+                  <Box as="span" fontWeight={"bold"} flex="1" textAlign="left">
                     {cat?.title} ({cat?.itemCards.length})
                   </Box>
                   <AccordionIcon />
                 </AccordionButton>
               </h2>
               {cat?.itemCards.map((menu) => (
-                <AccordionPanel key={menu?.card?.info?.id} pb={4}>
+                <AccordionPanel
+                  borderBottom={"1px solid #E5E4E2"}
+                  key={menu?.card?.info?.id}
+                >
                   <Box
                     display={"flex"}
                     justifyContent="space-between"
@@ -56,19 +56,47 @@ export default function Catgories({ catgories }) {
                           }
                         />
                       </Box>
-                      <Box>{menu?.card?.info?.name}</Box>
-                      <Box>₹{menu?.card?.info?.price / 100}</Box>
-                      <Box fontSize={13} color="gray.500" mt={5} w="xl">
+                      <Box fontWeight={"semibold"}>
+                        {menu?.card?.info?.name}
+                      </Box>
+                      <Box>
+                        ₹{" "}
+                        {menu?.card?.info?.price
+                          ? menu?.card?.info?.price / 100
+                          : menu?.card?.info?.defaultPrice / 100}
+                      </Box>
+                      <Box mt={5}>
+                        <Button
+                          border={"1px solid #e5e5e2"}
+                          w={"100"}
+                          shadow={"lg"}
+                          bgColor="white"
+                          color={"green.500"}
+                        >
+                          ADD
+                        </Button>
+                      </Box>
+
+                      <Box
+                        fontSize={13}
+                        color="gray.500"
+                        mt={5}
+                        w={["200", "250", "330", "370", "500"]}
+                      >
                         {menu?.card?.info?.description}
                       </Box>
                     </Box>
-                    <Image
-                      width={150}
-                      borderRadius="md"
-                      objectFit={"cover"}
-                      alt="image"
-                      src={`${IMG_CDN_URL}${menu?.card?.info?.imageId}`}
-                    />
+
+                    {menu?.card?.info?.imageId && (
+                      <Image
+                        mt={2}
+                        width={150}
+                        borderRadius="md"
+                        objectFit={"cover"}
+                        alt="image"
+                        src={`${IMG_CDN_URL}${menu?.card?.info?.imageId}`}
+                      />
+                    )}
                   </Box>
                 </AccordionPanel>
               ))}
