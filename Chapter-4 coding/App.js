@@ -5,14 +5,13 @@ import { Footer } from "./src/components/Footer";
 import Header from "./src/components/Header";
 import RestaurantList from "./src/components/RestaurantList";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-
 import Error from "./src/components/Error";
-import Contact from "./src/components/Contact";
 import { RestaurantDetails } from "./src/components/RestaurantDetails";
 import Profile from "./src/components/Profile";
 import ShimmerLoad from "./src/components/Shimmer";
 
 const About = lazy(() => import("./src/components/About"));
+const Contact = lazy(() => import("./src/components/Contact"));
 
 const AppLayout = () => {
   return (
@@ -47,7 +46,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: (
+          <Suspense fallback={<ShimmerLoad type={"menu"} />}>
+            <Contact />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurant/:id",

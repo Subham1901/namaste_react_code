@@ -9,10 +9,16 @@ export default function useApi() {
     setLoading(true);
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4698577&lng=78.3578246&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
-    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    )
+      .then(async (data) => {
+        const json = await data.json();
+        setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+        setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+      })
+      .catch((err) => {
+        throw "Data not found";
+      });
+
     setLoading(false);
   };
   useEffect(() => {

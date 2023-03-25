@@ -24,6 +24,7 @@ export default function RestaurantList() {
   const isOnline = useOnline();
 
   const getFilteredRestuarnts = (e) => {
+    setSearchText(e.target.value);
     const filterData = filterRestauant(e.target.value, allRestaurants);
     setFilteredRestaurant(filterData);
   };
@@ -58,8 +59,7 @@ export default function RestaurantList() {
         <Input
           w={"sm"}
           borderRadius="full"
-          focusBorderColor="#FF0000"
-          bgColor={"gray.50"}
+          focusBorderColor="#FC8019"
           border={"1px solid orange"}
           defaultValue={searchText}
           onChange={(e) => getFilteredRestuarnts(e)}
@@ -78,9 +78,8 @@ export default function RestaurantList() {
         <Input
           w={"sm"}
           borderRadius="full"
-          focusBorderColor="#FF0000"
-          bgColor={"gray.50"}
-          border={"1px solid orange"}
+          focusBorderColor="#FC8019"
+          border={"1px solid #FC8019"}
           defaultValue={searchText}
           onChange={(e) => getFilteredRestuarnts(e)}
           type={"search"}
@@ -103,7 +102,7 @@ export default function RestaurantList() {
             fontWeight={"semibold"}
             fontSize="2xl"
           >
-            Oops! No restaurant found!!☹️
+            Sorry! Couldn't found restaurant with name "{searchText}" ☹️
           </Text>
         ) : (
           filteredRestaurant.map((restaurn) => (
