@@ -15,7 +15,14 @@ import { IMG_CDN_URL } from "./config";
 import NONVEG from "../assets/nonveg.png";
 import VEG from "../assets/veg.png";
 import Catgories from "./Catgories";
+
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 export default function MenuItems({ catgories, title, menu, carousel }) {
+  const dispatch = useDispatch();
+  const addToCart = ({ id, name, image, price, qty }) => {
+    dispatch(addItem({ id, name, image, price, qty }));
+  };
   return (
     <>
       <Accordion
@@ -98,6 +105,17 @@ export default function MenuItems({ catgories, title, menu, carousel }) {
                             shadow={"lg"}
                             bgColor="white"
                             color={"green.500"}
+                            onClick={() =>
+                              addToCart({
+                                id: menu?.card?.info?.id,
+                                name: menu?.card?.info?.name,
+                                image: menu?.card?.info?.imageId,
+                                price:
+                                  menu?.card?.info?.price / 100 ||
+                                  menu?.card?.info?.defaultPrice / 100,
+                                qty: 1,
+                              })
+                            }
                           >
                             ADD
                           </Button>

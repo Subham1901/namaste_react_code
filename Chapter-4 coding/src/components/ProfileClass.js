@@ -34,7 +34,7 @@ class ProfileClass extends React.Component {
     return (
       <Container>
         <Box>
-          <Text>{this.state.gitUser.name}</Text>
+          <Text>{this.state.gitUser?.name}</Text>
         </Box>
       </Container>
     );

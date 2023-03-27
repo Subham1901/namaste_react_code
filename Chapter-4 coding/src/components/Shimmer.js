@@ -26,10 +26,15 @@ const Shimmer = ({ type }) => {
           justifyContent={"center"}
           alignItems="center"
         >
-          {Array(6)
+          {Array(8)
             .fill("")
             .map((data, index) => (
-              <Card m={(0, "2rem !important")} w={"xs"} p={2} key={index}>
+              <Card
+                m={(0, "1rem !important")}
+                w={["xs", "250"]}
+                p={2}
+                key={index}
+              >
                 <Skeleton height={140} />
                 <SkeletonText
                   mt="4"

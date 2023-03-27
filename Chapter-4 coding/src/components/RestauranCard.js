@@ -22,18 +22,20 @@ function RestauranCard({ restaurant }) {
   return (
     <Link to={`/restaurant/${restaurant.data.id}`}>
       <Card
-        m={(0, "2rem !important")}
-        w={"xs"}
+        m={(0, "1rem !important")}
+        w={["xs", "250px"]}
         transition={"all 0.5s"}
         css={{
           "&:hover": {
             transform: "scale(1.1)",
+            backgroundColor: "#FAF9F6",
           },
         }}
         padding={2}
         key={restaurant.data.id}
       >
         <Image
+          borderRadius={"md"}
           objectFit={"cover"}
           alt="image"
           src={`${IMG_CDN_URL}${restaurant.data.cloudinaryImageId}`}
@@ -68,13 +70,16 @@ function RestauranCard({ restaurant }) {
             {restaurant.data?.costForTwoString}
           </Text>
         </HStack>
-        <Divider mt={5} color={"gray.400"} />
-        {restaurant.data?.aggregatedDiscountInfo?.header && (
-          <Text color={"#CC5500"} display={"flex"} alignItems="center" mt={5}>
-            <MdLocalOffer color="#CC5500" style={{ marginRight: "4px" }} />
 
-            {restaurant.data?.aggregatedDiscountInfo?.header}
-          </Text>
+        {restaurant.data?.aggregatedDiscountInfo?.header && (
+          <>
+            <Divider mt={5} color={"gray.400"} />
+            <Text color={"#CC5500"} display={"flex"} alignItems="center" mt={5}>
+              <MdLocalOffer color="#CC5500" style={{ marginRight: "4px" }} />
+
+              {restaurant.data?.aggregatedDiscountInfo?.header}
+            </Text>
+          </>
         )}
       </Card>
     </Link>

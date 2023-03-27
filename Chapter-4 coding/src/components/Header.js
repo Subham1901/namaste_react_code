@@ -1,24 +1,17 @@
 import React from "react";
 import {
-  Avatar,
-  AvatarBadge,
   Box,
   Button,
   Code,
   Container,
-  Heading,
-  HStack,
   Img,
-  Text,
   useColorMode,
 } from "@chakra-ui/react";
-import { MdOutlineShoppingCart } from "react-icons/md";
-import { RiMoonClearLine } from "react-icons/ri";
-import { BsFillSunFill } from "react-icons/bs";
 import logo from "../assets/food.webp";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 function Header() {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const cart = useSelector((state) => state.cart.cartItems);
   return (
     <Container maxW={"container.xl"}>
       <Box
@@ -36,10 +29,10 @@ function Header() {
           justifyContent="center"
           alignItems={"center"}
         >
-          <Img height={70} width={70} mr={2} src={logo} />
-          <Heading fontSize={"xl"} textTransform={"uppercase"}>
+          <Img objectFit={"cover"} height={70} width={70} mr={2} src={logo} />
+          {/* <Heading fontSize={"xl"} textTransform={"uppercase"}>
             Food247
-          </Heading>
+          </Heading> */}
         </Box>
         <Box
           w={"sm"}
@@ -85,7 +78,7 @@ function Header() {
             }}
             variant={"unstyled"}
           >
-            <Link to="/">Sign In</Link>
+            <Link to="/signin">Sign In</Link>
           </Button>
 
           <Button
@@ -96,8 +89,8 @@ function Header() {
             }}
             variant={"unstyled"}
           >
-            <Link to="/">
-              <Code colorScheme={"green"}>0</Code> Cart
+            <Link to="/cart">
+              <Code colorScheme={"green"}>{cart.length}</Code> Cart
             </Link>
           </Button>
 

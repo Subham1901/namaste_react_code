@@ -54,21 +54,6 @@ export default function RestaurantList() {
   }
   return loading ? (
     <>
-      <Box alignItems="center" display={"flex"} justifyContent="center" p={5}>
-        {/* <form onSubmit={submitData}> */}
-        <Input
-          w={"sm"}
-          borderRadius="full"
-          focusBorderColor="#FC8019"
-          border={"1px solid orange"}
-          defaultValue={searchText}
-          onChange={(e) => getFilteredRestuarnts(e)}
-          type={"search"}
-          placeholder="Search restaurant"
-        />
-
-        {/* </form> */}
-      </Box>
       <Shimmer type={"home"} />
     </>
   ) : (

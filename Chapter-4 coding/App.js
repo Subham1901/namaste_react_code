@@ -9,6 +9,10 @@ import Error from "./src/components/Error";
 import { RestaurantDetails } from "./src/components/RestaurantDetails";
 import Profile from "./src/components/Profile";
 import ShimmerLoad from "./src/components/Shimmer";
+import SignIn from "./src/components/SignIn";
+import { Provider } from "react-redux";
+import Store from "./src/utils/Store";
+import Cart from "./src/components/Cart";
 
 const About = lazy(() => import("./src/components/About"));
 const Contact = lazy(() => import("./src/components/Contact"));
@@ -16,11 +20,13 @@ const Contact = lazy(() => import("./src/components/Contact"));
 const AppLayout = () => {
   return (
     <>
-      <Header />
-      {/* <RestaurantList /> */}
-      {/* Outlet */}
-      <Outlet />
-      <Footer />
+      <Provider store={Store}>
+        <Header />
+        {/* <RestaurantList /> */}
+        {/* Outlet */}
+        <Outlet />
+        <Footer />
+      </Provider>
     </>
   );
 };
@@ -56,20 +62,22 @@ const appRouter = createBrowserRouter([
         path: "/restaurant/:id",
         element: <RestaurantDetails />,
       },
+      {
+        path: "/signin",
+        element: <SignIn />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
     ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const config = {
-  initialColorMode: "dark",
-  useSystemColorMode: true,
-};
-const theme = extendTheme({
-  config,
-});
+
 root.render(
-  <ChakraProvider theme={theme}>
+  <ChakraProvider>
     <RouterProvider router={appRouter} />
   </ChakraProvider>
 );
