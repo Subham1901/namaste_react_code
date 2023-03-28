@@ -14,7 +14,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, IncQty, removeItem, DecQty } from "../utils/cartSlice";
 import { IMG_CDN_URL } from "./config";
-import { AiFillDelete } from "react-icons/ai";
+import { AiFillDelete, AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import about from "../assets/about.jpg";
 
 function Cart() {
@@ -69,17 +69,17 @@ function Cart() {
                   justifyContent="center"
                   alignItems="center"
                 >
-                  <Button onClick={() => dispatch(IncQty(data))}>+</Button>
+                  <Button p={0} onClick={() => dispatch(IncQty(data))}>
+                    <AiOutlinePlus size={20} />
+                  </Button>
                   <Text p={2}>{data.qty}</Text>
                   {data.qty > 1 ? (
-                    <Button onClick={() => dispatch(DecQty(data))}> -</Button>
+                    <Button p={0} onClick={() => dispatch(DecQty(data))}>
+                      <AiOutlineMinus size={20} />
+                    </Button>
                   ) : (
-                    <Button
-                      ml={2}
-                      p={0}
-                      onClick={() => removeItemFromCart(data.id)}
-                    >
-                      <AiFillDelete size={25} />
+                    <Button p={0} onClick={() => removeItemFromCart(data.id)}>
+                      <AiFillDelete size={20} />
                     </Button>
                   )}
                 </Box>
