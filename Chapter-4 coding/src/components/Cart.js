@@ -87,7 +87,17 @@ function Cart() {
               </Box>
             ))
           ) : (
-            <Heading fontWeight={"medium"}>You have no items</Heading>
+            <Box
+              w={["xs", "sm", "md", "lg"]}
+              h={["xs", "sm"]}
+              display="flex"
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              <Heading fontWeight={"medium"}>
+                Cart doesn't have any item!
+              </Heading>
+            </Box>
           )}
           {cart.length >= 1 && (
             <Button m={2} onClick={() => clearAllCartData()} colorScheme="red">
@@ -95,29 +105,31 @@ function Cart() {
             </Button>
           )}
         </Box>
-        <Box>
-          <Heading fontWeight={"semibold"} fontSize="2xl">
-            Order Summary
-          </Heading>
-          <Divider m={2} />
-          <Box display={"flex"} justifyContent="space-between">
-            <Text>Quantity </Text>
-            <Text>{totalQty}</Text>
-          </Box>
-          <Box display={"flex"} justifyContent="space-between">
-            <Text>Price </Text>
-            <Text>{totalPrice}</Text>
-          </Box>
-          <Divider size={"md"} />
-          <Box display={"flex"} justifyContent="space-between">
-            <Text fontWeight={"medium"}>TO PAY</Text>
-            <Text>{totalPrice}</Text>
-          </Box>
+        {cart.length >= 1 && (
+          <Box>
+            <Heading fontWeight={"semibold"} fontSize="2xl">
+              Order Summary
+            </Heading>
+            <Divider m={2} />
+            <Box display={"flex"} justifyContent="space-between">
+              <Text>Quantity </Text>
+              <Text>{totalQty}</Text>
+            </Box>
+            <Box display={"flex"} justifyContent="space-between">
+              <Text>Price </Text>
+              <Text>{totalPrice}</Text>
+            </Box>
+            <Divider size={"md"} />
+            <Box display={"flex"} justifyContent="space-between">
+              <Text fontWeight={"medium"}>TO PAY</Text>
+              <Text>{totalPrice}</Text>
+            </Box>
 
-          <Button mt={5} colorScheme={"green"}>
-            Checkout
-          </Button>
-        </Box>
+            <Button mt={5} colorScheme={"green"}>
+              Checkout
+            </Button>
+          </Box>
+        )}
       </Stack>
     </Container>
   );

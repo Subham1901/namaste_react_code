@@ -12,7 +12,13 @@ import {
 import { IMG_CDN_URL } from "./config";
 import NONVEG from "../assets/nonveg.png";
 import VEG from "../assets/veg.png";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 export default function Catgories({ catgories }) {
+  const dispatch = useDispatch();
+  const addToCart = ({ id, name, image, price, qty }) => {
+    dispatch(addItem({ id, name, image, price, qty }));
+  };
   return (
     <>
       {catgories &&
@@ -67,6 +73,17 @@ export default function Catgories({ catgories }) {
                       </Box>
                       <Box mt={5}>
                         <Button
+                          onClick={() =>
+                            addToCart({
+                              id: menu?.card?.info?.id,
+                              name: menu?.card?.info?.name,
+                              image: menu?.card?.info?.imageId,
+                              price:
+                                menu?.card?.info?.price / 100 ||
+                                menu?.card?.info?.defaultPrice / 100,
+                              qty: 1,
+                            })
+                          }
                           border={"1px solid #e5e5e2"}
                           w={"100"}
                           shadow={"lg"}
